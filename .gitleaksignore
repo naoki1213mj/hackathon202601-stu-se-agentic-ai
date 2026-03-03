@@ -1,0 +1,14 @@
+# Gitleaks false positive allowlist
+# Format: fingerprint (commit:file:rule:line)
+# See: https://github.com/gitleaks/gitleaks#gitleaksignore
+
+# deploy-app-service.yml: API_APP_NAME variable reference (not a secret)
+304ca7a14209c27ae624683064ee4fcc80ac434b:.github/workflows/deploy-app-service.yml:generic-api-key:43
+
+# launchSettings.json: Development-only environment variable names (not actual secrets, file already cleaned up)
+01cf5ba14814c41c7dd7b716865c1bcfb45e5a6a:src/api/dotnet/Properties/launchSettings.json:generic-api-key:11
+01cf5ba14814c41c7dd7b716865c1bcfb45e5a6a:src/api/dotnet/Properties/launchSettings.json:generic-api-key:13
+01cf5ba14814c41c7dd7b716865c1bcfb45e5a6a:src/api/dotnet/Properties/launchSettings.json:generic-api-key:14
+
+# deploy_csapi_app_service.bicep: Azure built-in RBAC role GUID (Key Vault Secrets User - public constant)
+53aa2b1d297f945458c6387589df82ca5208a1b8:infra/deploy_csapi_app_service.bicep:generic-api-key:122
